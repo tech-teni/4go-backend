@@ -9,6 +9,8 @@ const fs = require("fs");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const multer = require("multer");
+const docs = require("./docs/apiDocs");
 // middlewares
 app.use(cookieParser());
 app.use(express.json());
@@ -38,15 +40,16 @@ app.use("/", userRoutes);
 // app.use("/auth", authRoutes);
 // API DOCS
 app.get("/", (req, res) => {
-  fs.readFile("docs/apiDocs.json", (err, data) => {
-    if (err) {
-      res.status(400).json({
-        error: err,
-      });
-      const docs = JSON.parse(data);
-      res.json(docs);
-    }
-  });
+  // fs.readFile("docs/apiDocs.json", (err, data) => {
+  //   if (err) {
+  //     res.status(400).json({
+  //       error: err,
+  //     });
+  //     const docs = JSON.parse(data);
+  //     res.json(docs);
+  //   }
+  // });
+  res.send(docs);
 });
 app.listen(PORT, () => {
   console.log("app is running on port " + PORT);

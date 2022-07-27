@@ -34,18 +34,20 @@ const getAllUser = (req, res, next) => {
   });
   // .exclude("password");
 };
-const getOneUser = (req, res, next) => {
-  if (req.profile) {
-    return res.json(req.profile);
-  }
-  if (!req.auth && !req.profile) {
-    return res.json({
-      error: "user have no profile here, re-login",
-    });
-  }
-  const { _id } = req.auth;
+const getOneUser = (req, res, next, id) => {
+  // if (req.profile) {
+  // return res.json(req.profile);
+  // }
+  // if (!req.auth && !req.profile) {
+  //   return res.json({
+  //     error: "user have no profile here, re-login",
+  //   });
+  // }
+  // const { _id } = req.auth;
+
   authModel
-    .find({ _id: _id }, (err, user) => {
+    .find(id)
+    .exec((err, user) => {
       if (err) {
         return res.status(400).json({ err });
       }

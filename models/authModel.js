@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcrypt");
-
+const multer = require("multer");
 const authSchema = new Schema({
   firstName: {
     type: String,
@@ -37,6 +37,10 @@ const authSchema = new Schema({
     type: String,
     //required: true,
     enum: ["male", "female"],
+  },
+  img: {
+    data: Buffer,
+    contentType: String,
   },
   createdAt: {
     type: Date,

@@ -29,6 +29,8 @@ const postSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  following: [{ type: ObjectId, ref: "authModel" }],
+  followers: [{ type: ObjectId, ref: "authModel" }],
 });
 
 const postModel = mongoose.model("postModel", postSchema);

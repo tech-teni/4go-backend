@@ -40,7 +40,9 @@ const createAuthController = async (req, res) => {
   };
   const newUser = new authModel(user);
   newUser.save().then((result) => {
-    res.status(200).json({ message: "new user saved" });
+    res.status(200).json({
+      message: "new account has been succesfully created, pls log in",
+    });
   });
 };
 
@@ -78,6 +80,8 @@ const postLoginControllers = async (req, res) => {
             res.cookie("t", token, { expires: new Date(Date.now() + 900000) });
 
             const { _id, name, email } = user;
+            console.log(_id);
+
             return res.json({ token, user: { _id, email, name } });
           }
         }
