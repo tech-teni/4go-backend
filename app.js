@@ -5,17 +5,18 @@ const postRoutes = require("./routes/postRoutes");
 const authRoutes = require("./routes/authRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 const userRoutes = require("./routes/userRoutes");
+const followRoutes = require("./routes/followRoutes");
 const fs = require("fs");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const multer = require("multer");
 const docs = require("./docs/apiDocs");
+const env = require("dotenv").config();
 // middlewares
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
 app.use(cors());
 app.use(morgan("dev"));
 
@@ -36,6 +37,7 @@ app.use("/post", postRoutes);
 app.use("/auth", authRoutes);
 app.use("/profile", profileRoutes);
 app.use("/", userRoutes);
+app.use("/folow", followRoutes);
 
 // app.use("/auth", authRoutes);
 // API DOCS

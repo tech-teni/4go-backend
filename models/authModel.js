@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcrypt");
 const multer = require("multer");
+const { ObjectId } = mongoose.Schema;
 const authSchema = new Schema({
   firstName: {
     type: String,
@@ -42,6 +43,9 @@ const authSchema = new Schema({
     data: Buffer,
     contentType: String,
   },
+  following: [{ type: ObjectId }],
+  followers: [{ type: ObjectId }],
+
   createdAt: {
     type: Date,
     default: Date.now,

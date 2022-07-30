@@ -18,19 +18,18 @@ const postSchema = new Schema({
     data: Buffer,
     contentType: String,
   },
-  likes: Number,
+  likes: [{ type: ObjectId, ref: "authModel" }],
   comments: [
     {
-      body: String,
-      date: Date,
+      text: String,
+      created: { type: Date, default: Date.now },
+      postedBy: { type: ObjectId, ref: "authModel" },
     },
   ],
   date: {
     type: Date,
     default: Date.now,
   },
-  following: [{ type: ObjectId, ref: "authModel" }],
-  followers: [{ type: ObjectId, ref: "authModel" }],
 });
 
 const postModel = mongoose.model("postModel", postSchema);

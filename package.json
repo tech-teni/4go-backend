@@ -4,9 +4,7 @@
   "description": "4go ",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "npm run build",
-    "build": "app build"
+    "start": "node app"
   },
   "author": "Ganiyat Yakub",
   "license": "ISC",

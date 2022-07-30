@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const authModel = require("../models/authModel");
 const _ = require("lodash");
-//
+
 const UserById = (req, res, next, id) => {
   authModel.findById(id).exec((err, user) => {
     if (err) {
